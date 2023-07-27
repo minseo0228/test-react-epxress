@@ -6,23 +6,23 @@ phases:
       # 리액트 애플리케이션 빌드
       - git clone https://github.com/minseo0228/test-react-epxress.git
       - cd test-react-epxress/react-app
-      - docker build -t react-image-name .
+      - docker build -t react-image .
 
       # 익스프레스 애플리케이션 빌드
       - cd ../express-app
-      - docker build -t express-image-name .
+      - docker build -t express-image .
 
   build:
     commands:
       # Nginx로 리액트와 익스프레스 결합 이미지 빌드
       - cd ../
-      - docker build -t final-image-name .
+      - docker build -t final-image .
 
       # AWS ECR 로그인
       - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 301857435548.dkr.ecr.ap-northeast-2.amazonaws.com
 
       # ECR 레포지토리에 이미지 푸시
-      - docker tag final-image-name:latest 301857435548.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest
+      - docker tag final-image:latest 301857435548.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest
       - docker push 301857435548.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest
 
 artifacts:
