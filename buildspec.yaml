@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       # 리액트 애플리케이션 빌드
-      - git clone https://github.com/Hanium-Apollo/test-react-epxress.git
+      - git clone https://github.com/minseo0228/test-react-epxress.git
       - cd test-react-epxress/react-app
       - docker build -t react-image-name .
 
